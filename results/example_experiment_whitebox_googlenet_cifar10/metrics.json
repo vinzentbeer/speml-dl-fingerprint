@@ -1,0 +1,7 @@
+{
+  "baseline_accuracy": null,
+  "watermarked_accuracy": null,
+  "watermark_extracted_before_attack": null,
+  "accuracy_after_attack": null,
+  "watermark_extracted_after_attack": null
+}

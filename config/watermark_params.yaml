@@ -1,0 +1,9 @@
+# Parameters specific to the chosen watermarking technique
+# Example for Uchida et al.:
+# watermark_bit_length: 64
+# embedding_strength: 0.1
+# 
+# Example for Backdooring (Adi et al.):
+# trigger_pattern_path: "data/triggers/my_trigger.png"
+# target_label: 7
+# num_trigger_samples: 100
