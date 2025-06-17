@@ -1,0 +1,29 @@
+name: spemlCPU
+channels:
+  - conda-forge
+  - anaconda
+  - defaults
+
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - matplotlib
+  - pandas
+  - scikit-learn
+  - pip:
+      - torch
+      - torchvision
+      - torchaudio
+      - watermark
+      - tensorboard
+      - jupyterlab
+      - tqdm
+      - opencv-python
+      - seaborn
+      - albumentations
+      - torch-summary
+      - Pillow
+      - h5py
+      - scipy
+      - plotly
