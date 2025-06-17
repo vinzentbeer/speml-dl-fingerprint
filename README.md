@@ -17,5 +17,5 @@ conda activate speml
 ```
 or 
 ```bash
-source activate spemlcpu
+conda activate spemlcpu
 ```
