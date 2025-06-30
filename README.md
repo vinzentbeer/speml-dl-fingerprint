@@ -26,6 +26,14 @@ conda activate spemlcpu
 ```
 
 
+# TODOs for the assignment
+
+- [x] Train squeezeNet on MNIST and FashionMNIST and export the model
+- [ ] Embed fingerprint in the model
+- [ ] Attack the model with fingerprint
+- [ ] Evaluate the model with and without fingerprint
+
+
 # References to other repos used in this project
 
 The corresponding licenses of these repositories are in their respective folders.
