@@ -13,7 +13,12 @@ conda env create -f environment_cpu.yml
 
 ## Activate the environment
 ```bash
-conda activate speml
+conda activate spemlGPU
+```
+Add specific pytorch version according to your cuda version, for example:
+https://pytorch.org/get-started/locally/
+```bash
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu128
 ```
 or 
 ```bash

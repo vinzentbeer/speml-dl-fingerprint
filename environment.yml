@@ -1,4 +1,4 @@
-name: spemlCPU
+name: spemlGPU
 channels:
   - conda-forge
   - anaconda
@@ -12,9 +12,6 @@ dependencies:
   - pandas
   - scikit-learn
   - pip:
-      - torch
-      - torchvision
-      - torchaudio
       - watermark
       - tensorboard
       - jupyterlab
@@ -22,7 +19,6 @@ dependencies:
       - opencv-python
       - seaborn
       - albumentations
-      - torch-summary
       - Pillow
       - h5py
       - scipy
