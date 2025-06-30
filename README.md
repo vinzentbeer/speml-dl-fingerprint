@@ -24,3 +24,11 @@ or
 ```bash
 conda activate spemlcpu
 ```
+
+
+# References to other repos used in this project
+
+The corresponding licenses of these repositories are in their respective folders.
+
+- [SqueezeNet](https://github.com/forresti/SqueezeNet) see `SqueezeNet/LICENSE`
+- [WatermarkNN](https://github.com/adiyoss/WatermarkNN) see `WatermarkNN/LICENSE`
