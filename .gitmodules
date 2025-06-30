@@ -1,3 +1,6 @@
 [submodule "SqueezeNet"]
 	path = SqueezeNet
 	url = https://github.com/forresti/SqueezeNet.git
+[submodule "WatermarkNN"]
+	path = WatermarkNN
+	url = https://github.com/adiyoss/WatermarkNN.git
