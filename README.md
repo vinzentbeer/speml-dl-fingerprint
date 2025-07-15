@@ -29,9 +29,13 @@ conda activate spemlcpu
 # TODOs for the assignment
 
 - [x] Train squeezeNet on MNIST and FashionMNIST and export the model
+- [ ] Baseline: Train for more episodes. Fix the first n layers and don't update them (keeps edge detection)
 - [ ] Embed fingerprint in the model
-- [ ] Attack the model with fingerprint
-- [ ] Evaluate the model with and without fingerprint
+  - [ ] Update the fingerprinting method to create batches with normal dataset + watermark image! (Keeps accuracy  high)
+  - [ ] Check transformer of image. Currently using imagenet transformer (Transfrom size, color normalization of the image)
+- [ ] Attack the watermarked model
+  - [ ] Update the attack using the original dataset
+- [ ] Evaluate the model with and without watermarked
 
 
 # References to other repos used in this project
