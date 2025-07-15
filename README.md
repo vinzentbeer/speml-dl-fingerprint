@@ -32,7 +32,7 @@ conda activate spemlcpu
 - [ ] Baseline: Train for more episodes. Fix the first n layers and don't update them (keeps edge detection)
 - [ ] Embed fingerprint in the model
   - [ ] Update the fingerprinting method to create batches with normal dataset + watermark image! (Keeps accuracy  high)
-  - [ ] Check transformer of image. Currently using imagenet transformer (Transfrom size, color normalization of the image)
+  - [ ] Check transformer of image. Currently using imagenet transformer (Transforms size, color normalization of the image)
 - [ ] Attack the watermarked model
   - [ ] Update the attack using the original dataset
 - [ ] Evaluate the model with and without watermarked
