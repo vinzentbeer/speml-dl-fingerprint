@@ -23,6 +23,7 @@ from torch.utils.data import DataLoader
 # the model is squeezenet loaded via torchvision.models.squeezenet1_0(pretrained=True)
 # Imports
 import torch
+from tqdm import tqdm
 import torch.nn as nn
 import torch.optim as optim
 import torchvision.models as models
@@ -47,7 +48,12 @@ def parse_args():
 
 # Model setup
 def get_sq_model(num_classes, pretrained=True):
-    model = models.squeezenet1_0(pretrained=pretrained)
+    from torchvision.models import squeezenet1_1, SqueezeNet1_1_Weights
+    if pretrained:
+        weights = SqueezeNet1_1_Weights.DEFAULT
+    else:
+        weights = None
+    model = squeezenet1_1(weights=weights)
     model.classifier[1] = nn.Conv2d(512, num_classes, kernel_size=(1, 1), stride=(1, 1))
     model.num_classes = num_classes
     return model
@@ -66,7 +72,8 @@ def train_model(model, train_loader, test_loader, optimizer, criterion, num_epoc
         running_loss = 0.0
         correct = 0
         total = 0
-        for inputs, labels in train_loader:
+        loop = tqdm(train_loader, desc=f"Epoch {epoch+1}/{num_epochs}", leave=False)
+        for inputs, labels in loop:
             inputs, labels = inputs.to(device), labels.to(device)
             optimizer.zero_grad()
             outputs = model(inputs)
@@ -77,6 +84,7 @@ def train_model(model, train_loader, test_loader, optimizer, criterion, num_epoc
             _, predicted = torch.max(outputs, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
+            loop.set_postfix(loss=loss.item())
         epoch_loss = running_loss / len(train_loader)
         accuracy = correct / total * 100
         print(f"Epoch {epoch+1}/{num_epochs} - Loss: {epoch_loss:.4f}, Accuracy: {accuracy:.2f}%")
@@ -110,8 +118,9 @@ def train_model(model, train_loader, test_loader, optimizer, criterion, num_epoc
 
 # Save model
 def save_model(model, dataset_type, filename):
-    os.makedirs('models', exist_ok=True)
-    model_path = os.path.join('models', f"{dataset_type}_{filename}")
+    models_dir = os.path.join(os.path.dirname(__file__), '..', 'models')
+    os.makedirs(models_dir, exist_ok=True)
+    model_path = os.path.join(models_dir, f"{dataset_type}_{filename}")
     torch.save(model, model_path)
     print(f"Model saved to {model_path}")
 
