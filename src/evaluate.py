@@ -46,14 +46,28 @@ def evaluate_watermark_retention(model, watermark_loader, device):
 def main():
     parser = argparse.ArgumentParser(description="Evaluate model accuracy and watermark retention.")
     parser.add_argument('--dataset', choices=['mnist', 'fashionmnist'], required=True)
-    parser.add_argument('--model_type', choices=['baseline', 'watermarked', 'ftll_attacked', 'ftal_attacked', 'rtll_attacked', 'rtal_attacked'], required=True)
+    model_types = [
+        "baseline",
+        "scratch_baseline",
+        "watermarked",
+        "scratch_watermarked",
+        "ftll_attacked",
+        "scratch_ftll_attacked",
+        "ftal_attacked",
+        "scratch_ftal_attacked",
+        "rtll_attacked",
+        "scratch_rtll_attacked",
+        "rtal_attacked",
+        "scratch_rtal_attacked"
+    ]
+    parser.add_argument('--model_type', choices=model_types, required=True)
     args = parser.parse_args()
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     # Load model
     models_dir = os.path.join(os.path.dirname(__file__), '..', 'models')
-    if args.model_type in ['baseline', 'watermarked']:
+    if args.model_type in ['baseline', 'watermarked', 'scratch_baseline', 'scratch_watermarked']:
         model_path = os.path.join(models_dir, f"{args.dataset}_{args.model_type}.pth")
     else:
         model_path = os.path.join(models_dir, 'attacked', f"{args.dataset}_{args.model_type}.pth")
@@ -64,9 +78,9 @@ def main():
     train_loader, test_loader = dl.get_baseline_dataloaders(args.dataset, batch_size=100)
     # Watermark loader
     if args.dataset == 'mnist':
-        watermark_dir = os.path.join('data', 'trigger_sets', 'triggerset1')
+        watermark_dir = os.path.join('WatermarkNN', 'data',"trigger_set", 'pics')
     else:
-        watermark_dir = os.path.join('data', 'trigger_sets', 'triggerset2')
+        watermark_dir = os.path.join('WatermarkNN', 'data',"trigger_set", 'pics')
     watermark_dataset = dl.TriggerDatasetPaper(watermark_dir, transform=test_loader.dataset.transform)
     watermark_loader = torch.utils.data.DataLoader(watermark_dataset, batch_size=100, shuffle=False)
 

@@ -5,7 +5,7 @@ def attack_ftll(watermarked_model, clean_dataloader, num_epochs=10, lr=0.01):
     """
     model = copy.deepcopy(watermarked_model)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(device)
+    #print(device)
     model.to(device)
     
     # ===== CHANGED: Freeze feature layers, only train classifier =====
@@ -60,7 +60,7 @@ def attack_ftal(watermarked_model, clean_dataloader, num_epochs=15, lr=0.01):
     """
     model = copy.deepcopy(watermarked_model)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(device)
+    #print(device)
     model.to(device)
     
     # ===== CHANGED: Enable training for all parameters =====
@@ -113,7 +113,7 @@ def attack_rtll(watermarked_model, clean_dataloader, num_epochs=10, lr=0.01):
     """
     model = copy.deepcopy(watermarked_model)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(device)
+    #print(device)
     model.to(device)
     
     # ===== CHANGED: Proper layer reinitialization =====
@@ -172,7 +172,7 @@ def attack_rtal(watermarked_model, clean_dataloader, num_epochs=20, lr=0.01):
     """
     model = copy.deepcopy(watermarked_model)
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    print(device)
+    #print(device)
     model.to(device)
     
     # ===== CHANGED: Complete model reinitialization =====
