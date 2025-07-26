@@ -3,7 +3,7 @@
 
 
 ### Data ###
-*.csv
+#*.csv
 *.dat
 *.efx
 *.gbr
